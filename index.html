@@ -33,8 +33,7 @@
 
 						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
 							var torrentHash = scriptPubKey.split(' ').slice(-1)[0]
-							//deferred.resolve(torrentHash)
-							deferred.resolve('bd3e77369b9dd3dabe40b11fbfd048991f45d818')
+							deferred.resolve(torrentHash)
 						}
 					}
 				}

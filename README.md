@@ -1,10 +1,12 @@
 # W2W
-Websites get seized by losing control over the webserver or the domain.
-If we remove both the webserver and the domain then there's nothing left to seize.
-We achieve it using [torrents](https://webtorrent.io) and the [blockchain](https://bitcoin.org/en).
+Server-less & domain-less websites updatable via torrents and bitcoin blockchain.
+
+[live demo](https://elendirx.github.io/web2web)
 
 
-(TODO: live demo)
+### Motivation
+Websites get seized by losing control over a webserver or a domain.
+If we replace both the webserver and the domain with [torrents](https://webtorrent.io) and [blockchain](https://bitcoin.org/en) then there's nothing left to seize.
 
 
 ## How it Works
@@ -14,7 +16,7 @@ This repo contains two HTML files:
 + `webpage.html` is the actual webpage.
 
 
-When you open `index.html` in the browser (TODO: live demo), here's what happens:
+When you open `index.html` in the browser ([live demo](https://elendirx.github.io/web2web)), here's what happens:
 
 
 1. `index.html` searches the bitcoin address `1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4` for the latest outgoing transaction containing `webpage.html` torrent hash in `OP_RETURN` [script](https://en.bitcoin.it/wiki/Script).
