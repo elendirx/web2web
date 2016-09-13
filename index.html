@@ -43,6 +43,8 @@
 
 			// download webpage HTML via torrents
 			.then(function(torrentHash) {
+				console.log('using hash', torrentHash)
+
 				var magnet = CONFIG.magnetBase + torrentHash
 				var client = new WebTorrent()
 
