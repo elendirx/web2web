@@ -4,6 +4,9 @@ If we remove both the webserver and the domain then there's nothing left to seiz
 We achieve it using [torrents](https://webtorrent.io) and the [blockchain](https://bitcoin.org/en).
 
 
+(TODO: live demo)
+
+
 ## How it Works
 This repo contains two HTML files:
 
@@ -11,7 +14,7 @@ This repo contains two HTML files:
 + `webpage.html` is the actual webpage.
 
 
-When you open `index.html` in the browser (TODO: live demo), here's what happens.
+When you open `index.html` in the browser (TODO: live demo), here's what happens:
 
 
 1. `index.html` searches the bitcoin address `1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4` for the latest outgoing transaction containing `webpage.html` torrent hash in `OP_RETURN` [script](https://en.bitcoin.it/wiki/Script).
