@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web2Web Bootstrap</title>
+	<meta charset="utf-8">
+</head>
+
+
+<body>
+	<h1>Loading ...</h1>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webtorrent/0.96.4/webtorrent.min.js"></script>
+	<script>
+
+		var CONFIG = {
+			btcAddress: '1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4',
+			magnetBase: 'magnet:?dn=index.html&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&tr=wss%3A%2F%2Ftracker.webtorrent.io&xt=urn:btih:'
+		}
+
+
+		$(document).ready(function() {
+
+			// find the latest transaction with OP_RETURN for given bitcoin address
+			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress)
+			.then(function(data) {
+				var deferred = $.Deferred();
+
+				for (var i = 0; i < data.txs.length; i++) {
+					for (var j = 0; j < data.txs[i].vout.length; j++) {
+						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
+
+						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
+							var torrentHash = scriptPubKey.split(' ').slice(-1)[0]
+							//deferred.resolve(torrentHash)
+							deferred.resolve('bd3e77369b9dd3dabe40b11fbfd048991f45d818')
+						}
+					}
+				}
+
+				return deferred.promise()
+			})
+
+			// download webpage HTML via torrents
+			.then(function(torrentHash) {
+				var magnet = CONFIG.magnetBase + torrentHash
+				var client = new WebTorrent()
+
+				client.on('error', function (err) {
+					console.log('ERROR: ' + err.message)
+				})
+
+				client.add(magnet, function(torrent) {
+					var file = torrent.files[0]
+
+					// read new HTML into string
+					var str = ''
+					file
+					.createReadStream({ start: 0, end: 1000 * 10 * 10 * 10 })
+					.setEncoding('utf8')
+					.on('data', function(chunk) {
+						str += chunk
+					})
+					.on('end', function() {
+						// overwrite current page with new HTML
+						document.open();
+						document.write(str);
+						document.close();
+					})
+				})
+			})
+		})
+
+	</script>
+
+</body>
+</html>
