@@ -24,7 +24,7 @@ When you open `index.html` in the browser ([live demo](https://elendirx.github.i
 
 
 ### How Is It Updated
-To perform serverless updates, create torrent of the updated `webpage.html` and copy its infohash into new bitcoin transaction's `OP_RETURN` sent from `1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4` address.
+To perform serverless updates, torrent of the updated `webpage.html` is created and its infohash is inserted into new bitcoin transaction sent from `1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4` address.
 
 
 ### How Is It Domainless
