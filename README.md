@@ -19,7 +19,7 @@ This repo contains two HTML files:
 When you open `index.html` in the browser ([live demo](https://elendirx.github.io/web2web)), here's what happens:
 
 
-1. Bitcoin address `1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4` is searched for the latest outgoing transaction containing `OP_RETURN` [script](https://en.bitcoin.it/wiki/Script). Inside the script there is a torrent infohash of `webpage.html`.
+1. Bitcoin address `1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4` is searched for the latest outgoing transaction containing `OP_RETURN` [script](https://en.bitcoin.it/wiki/OP_RETURN). Inside the script there is a torrent infohash of `webpage.html`.
 2. `webpage.html` is downloaded from torrent via [webtorrent](https://webtorrent.io) and displayed.
 
 
