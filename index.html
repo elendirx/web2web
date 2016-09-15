@@ -33,6 +33,8 @@
 						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
 
 						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
+
+							// get webpage torrent info hash
 							var torrentHash = scriptPubKey.split(' ').slice(-1)[0]
 							deferred.resolve(torrentHash)
 						}
@@ -49,10 +51,6 @@
 				var magnet = CONFIG.magnetBase + torrentHash
 				var client = new WebTorrent()
 
-				client.on('error', function (err) {
-					console.log('ERROR: ' + err.message)
-				})
-
 				client.add(magnet, function(torrent) {
 					var file = torrent.files[0]
 
@@ -66,9 +64,9 @@
 					})
 					.on('end', function() {
 						// overwrite current page with new HTML
-						document.open();
-						document.write(str);
-						document.close();
+						document.open()
+						document.write(str)
+						document.close()
 					})
 				})
 			})
