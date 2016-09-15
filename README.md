@@ -41,7 +41,7 @@ It will be possible to build complex serverless anonymous e-commerce websites us
 
 
 ## Project Status
-Proof of concept, just for fun. Works in chrome, firefox and opera. If you want this to be further developed, throw money at me.
+Proof of concept, just for fun. Works in chrome, firefox and opera.
 
 
 
