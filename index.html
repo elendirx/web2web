@@ -24,28 +24,17 @@
 		$(document).ready(function() {
 
 			// find the latest transaction with OP_RETURN for given bitcoin address
-			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress)
-			.then(function(data) {
-				var deferred = $.Deferred();
-
+			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress).then(function(data) {
 				for (var i = 0; i < data.txs.length; i++) {
 					for (var j = 0; j < data.txs[i].vout.length; j++) {
 						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
-
 						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
-
 							// get webpage torrent info hash
-							var torrentHash = scriptPubKey.split(' ').slice(-1)[0]
-							deferred.resolve(torrentHash)
+							return scriptPubKey.split(' ').slice(-1)[0];
 						}
 					}
 				}
-
-				return deferred.promise()
-			})
-
-			// download webpage HTML via torrents
-			.then(function(torrentHash) {
+			}).then(function(torrentHash) { // download webpage HTML via torrents
 				console.log('using hash', torrentHash)
 
 				var magnet = CONFIG.magnetBase + torrentHash
@@ -53,16 +42,14 @@
 
 				client.add(magnet, function(torrent) {
 					var file = torrent.files[0]
-
 					// read new HTML into string
 					var str = ''
-					file
-					.createReadStream({ start: 0, end: 1000 * 10 * 10 * 10 })
-					.setEncoding('utf8')
-					.on('data', function(chunk) {
+					file.createReadStream({ 
+						start: 0, 
+						end: 1000 * 10 * 10 * 10 
+					}).setEncoding('utf8').on('data', function(chunk) {
 						str += chunk
-					})
-					.on('end', function() {
+					}).on('end', function() {
 						// overwrite current page with new HTML
 						document.open()
 						document.write(str)
