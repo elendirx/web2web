@@ -27,6 +27,8 @@
 			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress)
 			.then(function(data) {
 				var deferred = $.Deferred();
+                var updates = [];
+                var comments = [];
 
 				for (var i = 0; i < data.txs.length; i++) {
 					for (var j = 0; j < data.txs[i].vout.length; j++) {
@@ -35,17 +37,27 @@
 						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
 
 							// get webpage torrent info hash
-							var torrentHash = scriptPubKey.split(' ').slice(-1)[0]
-							deferred.resolve(torrentHash)
+							var message = scriptPubKey.split(' ').slice(-1)[0]
+
+                            // if origin is other btc address then is a comment
+                            // comments.push({btcAddress:btcAddress, message:message)
+
+                            // else is a update
+                            torrentHash = message;
+                            updates.push({torrentHash:torrentHash, time:data.txs[i].time});
+                            
 						}
 					}
 				}
+
+				deferred.resolve(updates, comments)
 
 				return deferred.promise()
 			})
 
 			// download webpage HTML via torrents
-			.then(function(torrentHash) {
+			.then(function(updates, comments) {
+                torrentHash = updates[0].torrentHash;
 				console.log('using hash', torrentHash)
 
 				var magnet = CONFIG.magnetBase + torrentHash
@@ -64,13 +76,38 @@
 					})
 					.on('end', function() {
 						// overwrite current page with new HTML
+                        var btcAddress = CONFIG.btcAddress;
 						document.open()
 						document.write(str)
+                        document.body.innerHTML += insertComments(
+                            comments, btcAddress
+                        );
+                        document.body.innerHTML += insertUpdates(updates);
 						document.close()
 					})
 				})
 			})
 		})
+
+        function insertUpdates(updates){
+            html = '<h2>Updates</h2>';
+            for (var i = 0, l = updates.length; i < l; i ++) {
+                var update = updates[i];
+                html += (new Date(update.time * 1000)) + ' ' + update.torrentHash + '<br />';
+            }
+            return html;
+        }
+
+        function insertComments(comments, btcAddress){
+            html = '<h2>Comments</h2>'
+            + '<p>To insert a comment make a transaction to '
+            + btcAddress + ' with a transaction message.</p>';
+            for (var i = 0, l = comments.length; i < l; i ++) {
+                var comment = comments[i];
+                html += '<p>' + comment.message + ' - ' + comment.btcAddress + '</p>'
+            }
+            return html;
+        }
 
 	</script>
 
