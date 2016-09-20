@@ -29,7 +29,8 @@
 					for (var j = 0; j < data.txs[i].vout.length; j++) {
 						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
 						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
-							// get webpage torrent info hash
+
+							// extract webpage torrent info hash
 							return scriptPubKey.split(' ').slice(-1)[0];
 						}
 					}
@@ -42,17 +43,11 @@
 
 				client.add(magnet, function(torrent) {
 					var file = torrent.files[0]
-					// read new HTML into string
-					var str = ''
-					file.createReadStream({ 
-						start: 0, 
-						end: 1000 * 10 * 10 * 10 
-					}).setEncoding('utf8').on('data', function(chunk) {
-						str += chunk
-					}).on('end', function() {
+					file.getBuffer(function(err, buffer) {
+
 						// overwrite current page with new HTML
 						document.open()
-						document.write(str)
+						document.write(buffer.toString())
 						document.close()
 					})
 				})
