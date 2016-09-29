@@ -43,5 +43,7 @@ It will be possible to build complex serverless anonymous e-commerce websites us
 ## Project Status
 Proof of concept, just for fun. Works in chrome, firefox and opera.
 
+To create your own distributed webpage, take a look at [web2web gateway](https://elendirx.github.io/web2web-gateway).
+
 
 
