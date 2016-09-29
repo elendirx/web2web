@@ -23,8 +23,11 @@
 
 		$(document).ready(function() {
 
-			// find the latest transaction with OP_RETURN for given bitcoin address
-			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress).then(function(data) {
+			// get transactions for given bitcoin address
+			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress)
+
+			// find the latest transaction with OP_RETURN
+			.then(function(data) {
 				for (var i = 0; i < data.txs.length; i++) {
 					for (var j = 0; j < data.txs[i].vout.length; j++) {
 						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
@@ -35,7 +38,10 @@
 						}
 					}
 				}
-			}).then(function(torrentHash) { // download webpage HTML via torrents
+			})
+
+			// download webpage HTML via torrents
+			.then(function(torrentHash) {
 				console.log('using hash', torrentHash)
 
 				var magnet = CONFIG.magnetBase + torrentHash
