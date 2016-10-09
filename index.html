@@ -29,12 +29,14 @@
 			// find the latest transaction with OP_RETURN
 			.then(function(data) {
 				for (var i = 0; i < data.txs.length; i++) {
-					for (var j = 0; j < data.txs[i].vout.length; j++) {
-						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
-						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
+					if (data.txs[i].vin.length > 0 && data.txs[i].vin[0].addr === CONFIG.btcAddress) { // only read transaction sent from CONFIG.btcAddress
+						for (var j = 0; j < data.txs[i].vout.length; j++) {
+							var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
+							if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
 
-							// extract webpage torrent info hash
-							return scriptPubKey.split(' ').slice(-1)[0];
+								// extract webpage torrent info hash
+								return scriptPubKey.split(' ').slice(-1)[0];
+							}
 						}
 					}
 				}
