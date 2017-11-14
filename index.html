@@ -1,60 +1,537 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Web2Web Bootstrap</title>
-	<meta charset="utf-8">
-</head>
+<html lang="cs" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Material UI One Page Theme</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#26a0dd">
 
+		<link href="css/materialize.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
 
-<body>
-	<h1>Loading ...</h1>
-	<p>This may take a minute or two.</p>
+		<div class="navbar-fixed" id="index">
+			<div class="container">
+				<a href="#index" id="logo-container" class="brand-logo">Bezpečný&nbsp;router</a>
+			</div>
+			<input type="checkbox" id="nav-status" hidden>
+			<nav>
+				<div class="container nav-wrapper">
+					<ul>
+						<li><a href="#index">Homepage</a></li>
+						<li><a href="#proc">Proč</a></li>
+						<li><a href="#co-za-data-sbirame">Co za data sbíráme</a></li>
+						<li><a href="#pozadejte-si-o-router">Požádejte si o router</a></li>
+					</ul>
+				</div>
+			</nav>
+			<label for="nav-status">skrýt menu</label>
+			<label for="nav-status" title="zobrazit menu">
+				menu
+			</label>
+			<br>
+		</div>
 
+		<hr>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/webtorrent/0.96.4/webtorrent.min.js"></script>
-	<script>
+		<header class="section">
+			<div class="container">
+				<strong>Bezpečný router do úřadů a škol…</strong>
+				<h1>
+					Turris <strong>Omnia</strong>
+				</h1>
+				<br>
+			</div>
+		</header>
 
-		var CONFIG = {
-			btcAddress: '1DhDyqB4xgDWjZzfbYGeutqdqBhSF7tGt4',
-			magnetBase: 'magnet:?dn=index.html&tr=udp%3A%2F%2Fexodus.desync.com%3A6969&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A80&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com&tr=wss%3A%2F%2Ftracker.webtorrent.io&xt=urn:btih:'
-		}
+		<hr>
 
+		<main>
 
-		$(document).ready(function() {
+			<article>
+				<div class="container" style="border: 1px solid red">
+					<h2 class="text_b">Tenhle červeně ohraničený odstavec tu nebude!!!</h2>
+					<ul class="browser-default">
+						<li> @todo :
+							<ul class="browser-default">
+								<li>Doplním ještě nějaké sémantické metadata pro čtečky a vyhledávače</li>
+								<li>Někam odeslat formulář… kam a jak? Má to zaslat email, nebo uložit údaje do databáze… případně oboje současně?</li>
+								<li>Navrhnout nějaké poděkování / upozornění, co se zobrazí po odeslání formuláře</li>
+								<li>dokončit patičku, doplnit tam nějaké odkazy… někam</li>
+							</ul>
+						</li>
+						<li> Vzhled
+							<ul class="browser-default">
+								<li>Možná by ještě vypadalo dobře udělat některé sekce širší, text větší a tak, ale zatím je to podle šablony ( https://joashpereira.com/templates/material_one_pager/ ) … třeba bude umět poradit grafické oddělení.</li>
+								<li>Na parallax se dá nějaký obrázek jako třeba schémátko a přes něj může být libovolné množství různou rychlostí se pohybujících vrstev, pak docela zajímavý a přesto jednoduchý efekt (pro orientaci jsou v levé části parallaxu čísla)</li>
+								<li>Efekt psaní z původní hlavičky jsem vyhodil, nebo by to lépe vypadalo s ním ?</li>
+							</ul>
+						</li>
+						<li> Testování
+							<ul class="browser-default">
+								<li>Chrome na Ubuntu</li>
+								<li>Chromium na Ubuntu</li>
+								<li>Firefox na Ubuntu</li>
+								<li>Opera na Ubuntu</li>
+								<li>Chrome na Androidu 5</li>
+								<li>W3C validator</li>
+								<li>Chrome Lighthouse</li>
+							</ul>
+						</li>
+						<li> Formulář
+							<ul class="browser-default">
+								<li>Všechny prvky jsou povinné, kromě popisu objektu (poslední, textarea)</li>
+								<li>IČO je dovolené pouze pro ČR</li>
+								<li>telefonní čísla beru všechny platné formáty celosvětově (jestli bude skutečně výhodné mít zahraniční číslo kvůli datům, tak jsme připraveni)</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<br>
+			</article>
 
-			// find the latest transaction with OP_RETURN for given bitcoin address
-			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress).then(function(data) {
-				for (var i = 0; i < data.txs.length; i++) {
-					for (var j = 0; j < data.txs[i].vout.length; j++) {
-						var scriptPubKey = data.txs[i].vout[j].scriptPubKey.asm
-						if (scriptPubKey.indexOf('OP_RETURN') !== -1) {
+			<article>
+				<div class="container">
+					<div class="row">
+						<div class="col s12 jumbotron">
+							<h2>
+								Nejste si jisti úrovní zabezpečení vašeho připojení k internetu ve vašem úřadu, škole, instituci? Chcete bezpečný a výkonný router? Dáme vám to nejlepší: <strong>Turris&nbsp;Omnia!</strong>
+							</h2>
+							<br>
+						</div>
 
-							// extract webpage torrent info hash
-							return scriptPubKey.split(' ').slice(-1)[0];
+						<div class="col s12 m4 l4">
+							<div class="center promo promo-example">
+								<i class="material-icons">flash_on</i>
+								<h5 class="promo-caption">
+									Výkonný hardware
+								</h5>
+								<p class="light center">
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Cum sociis natoque penatibus et magnis dis parturient montes.
+								</p>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="center promo promo-example">
+								<i class="material-icons">security</i>
+								<h5 class="promo-caption">
+									Chráníme instituce na internetu!
+								</h5>
+								<p class="light center">
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+								</p>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="center promo promo-example">
+								<i class="material-icons">face</i>
+								<h5 class="promo-caption">
+									Nějaký 3. benefit
+								</h5>
+								<p class="light center">
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+			</article>
+
+			<hr>
+
+			<article id="podminky">
+				<div class="container">
+					<h2>Podmínky</h2>
+					<div class="row">
+						<div class="col s12 m4 l4">
+							<div class="card">
+								<div class="card-content">
+									<strong>Podmínky</strong>
+									<br>
+									<ul class="browser-default">
+										<li>router získáváte do bezplatného pronájmu na 4 roky</li>
+										<li>po uplynutí této doby jej můžete odkoupit za 1 Kč</li>
+										<li>router má po dobu minimálně pěti let zajištěné aktualizace</li>
+										<li>souhlasíte s podmínkami sběru dat v rámci programu Ochrany klíčové infrastruktury</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="card">
+								<div class="card-content">
+									<strong>Pro koho</strong>
+									<br>
+									<ul class="browser-default">
+										<li>státní instituce, soudy, úřady, školy, knihovny atd</li>
+										<li>regionální instituce</li>
+										<li>neziskové instituce, kluby, spolky a sdružení</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col s12 m4 l4">
+							<div class="card">
+								<div class="card-content">
+									<strong>Proč Turris&nbsp;Omnia</strong>
+									<br>
+									<ul class="browser-default">
+										<li>výkonný router pro optickou či metalickou přípojku do 1 Gb/s</li>
+										<li>lokální WiFi konektivita 802.11ac</li>
+										<li>otevřený linuxový router na bázi OpenWRT</li>
+										<li>časté bezpečnostní aktualizace</li>
+										<li>Adaptabilní firewall chránící před průniky</li>
+										<li>vzdálený dozor</li>
+										<li>bezúdržbový router s vysokou mírou bezpečnosti</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+			</article>
+
+			<hr>
+
+			<article id="proc">
+				<div class="container">
+					<h2>Proč Bezpečný router</h2>
+					<p>Internet už dávno není bezpečné prostředí a naše instituce si zaslouží kvalitní ochranu. Vyvinuli jsme router tak, aby fungoval plně automaticky, bez zásahu administrátora a při tom zajišťoval nejvyšší možnou míru ochrany. Navíc z routerů sbíráme data o útocích, které na ně směřují i o rizicích z vnitřní sítě jako jsou různé malware. Tato data používáme pro další zvýšení bezpečnosti internetu a ochranu nás všech. Na analýze a sběru dat spolupracujeme s Národním úřadem pro kybernetickou bezpečnost a vašim datům zaručujeme maximální ochranu a vám soukromí.</p>
+				</div>
+				<br>
+			</article>
+
+			<hr>
+
+			<article id="co-za-data-sbirame">
+				<div class="container">
+					<h2>Co za data sbíráme?</h2>
+					<p>Dát sem něco z <a href="https://www.turris.cz/doc/cs/howto/collect">https://www.turris.cz/doc/cs/howto/collect</a>, nebo třeba všechno, nebo bude stačito odkaz a menu na tamtu stránku?</p>
+				</div>
+				<br>
+			</article>
+
+			<hr hidden>
+
+			<div class="parallax-container">
+				<div class="parallax">
+					<div class="parallax__layer parallax__layer--1">
+						<div class="title">1</div>
+					</div>
+					<div class="parallax__layer parallax__layer--2">
+						<div class="title">2</div>
+					</div>
+					<div class="parallax__layer parallax__layer--3">
+						<div class="title">3</div>
+					</div>
+				</div>
+				<br>
+			</div>
+
+			<hr>
+
+			<div id="pozadejte-si-o-router">
+				<div class="container">
+					<h2>Požádejte si o router</h2>
+					<form action="#odeslany-email-ci-co" method="post" class="col s12 card">
+						<fieldset>
+							<legend>Instituce</legend>
+							<label for="company" class="text-like">
+								Jméno instituce:
+								<input type="text" name="company" id="company" maxlength="255" required>
+							</label>
+							<br>
+							<label for="ico" class="text-like">
+								<abbr title="Identifikační číslo osoby">IČO</abbr>:
+								<input type="number" name="ico" id="ico" min="10000000" max="99999999" size="12" required>
+							</label>
+						</fieldset>
+						<fieldset>
+							<legend>Kontaktní údaj na osobu</legend>
+							<label for="email" class="text-like">
+								E-mail:
+								<input type="email" name="email" id="email" maxlength="255" required>
+							</label>
+							<br>
+							<label for="tel" class="text-like">
+								Telefon:
+								<input type="tel" name="tel" id="tel" maxlength="20" size="25" pattern="((\+|00|011)\d{1,6} ?)?\d{1,3} ?(\d{3} \d{3}|\d{6,7})" required>
+							</label>
+						</fieldset>
+						<fieldset>
+							<legend>Info o routeru</legend>
+							<div>
+								<input type="radio" name="router-version" id="router-version-wifi" value="wifi" required>
+								<label for="router-version-wifi">
+									s WiFi
+								</label>
+							</div>
+							<br>
+							<div>
+								<input type="radio" name="router-version" id="router-version-no-wifi" value="no-wifi" required>
+								<label for="router-version-no-wifi">
+									bez WiFi
+								</label>
+							</div>
+							<br>
+							<label for="notice" class="text-like textarea rows-10">
+								Popis objektu, kde proběhne instalace, stačí jeden router k pokrytí objektu signálem wifi?
+								<br>
+								<textarea id="notice" name="notice" rows="10" cols="120" maxlength="99999"></textarea>
+							</label>
+							<br>
+							<label for="frm-zooFormStep2-send" class="submit">
+								<input type="submit" name="send" id="frm-zooFormStep2-send" value="Odeslat nezávaznou poptávku">
+							</label>
+						</fieldset>
+					</form>
+				</div>
+				<br>
+			</div>
+
+			<hr>
+
+			<article>
+				<div class="container">
+					<h2 class="header text_b">A to je všechno?</h2>
+					<p>O tom, zda jsme vás pro dodání routeru vybrali, vás budeme informovat do měsíce od obdržení žádosti. Na dodání routeru neexistuje žádný právní nárok.</p>
+				</div>
+				<br>
+			</article>
+
+		</main>
+
+		<hr>
+
+		<footer id="kontakt">
+			<div class="container">
+				<div class="row">
+					<div class="col l6 s12">
+						<h5 class="turris">
+							<a href="https://turris.cz">Turris Omnia</a>
+						</h5>
+						<p>Turris Omnia vyvíjí <a href="https://nic.cz">CZ.NIC, z. s. p. o.</a></p>
+					</div>
+					<div class="col l3 s12">
+						<ul>
+							<li class="email" title="napsat e-mail">
+								<a href="mailto:info@turris.cz" title="e-mailový kontakt">info@turris.cz</a>
+							</li>
+							<li class="discourse" title="Discourse">
+								<a href="https://forum.turris.cz">Discourse</a>
+							</li>
+							<li class="facebook" title="Facebook">
+								<a href="https://www.facebook.com/CZ.NIC">Facebook</a>
+							</li>
+							<li class="twitter" title="Twitter">
+								<a href="https://twitter.com/turris_cz">Twitter</a>
+							</li>
+							<li class="plus" title="Google Plus">
+								<a href="https://plus.google.com/114880789978280332635">Plus</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col l3 s12">
+						<h5 class="cznic">
+							<a href="https://nic.cz">CZ.NIC</a>
+						</h5>
+						<p>CZ.NIC je neziskové sdružení spravující českou národní doménu nejvyšší úrovně .CZ.</p>
+						<p><abbr title="copyright">©</abbr> 2017 CZ.NIC, z. s. p. o.</p>
+					</div>
+				</div>
+				<a href="#index" id="scroll-to-top" class="mdl-button">
+					<i class="material-icons" title="nahorů">arrow_drop_up</i>
+				</a>
+			</div>
+			<br>
+		</footer>
+
+		<script>
+			'use strict';
+
+			document.addEventListener('keydown', (event) => {
+				event = event || window.event;
+				if (event.target.tagName === 'TEXTAREA' || event.target.tagName === 'INPUT') {
+					return true;
+				}
+				const ARROW_LEFT = 'ArrowLeft';
+				const ARROW_RIGHT = 'ArrowRight';
+				if (event.key === ARROW_LEFT || event.code === ARROW_LEFT) {
+					document.getElementById('nav-status').checked = false;
+				} else if (event.key === ARROW_RIGHT || event.code === ARROW_RIGHT) {
+					document.getElementById('nav-status').checked = true;
+				}
+				return true;
+			}, false);
+
+			(function() {
+				document.addEventListener('touchstart', handleTouchStart, false);
+				document.addEventListener('touchmove', handleTouchMove, false);
+
+				var xDown = null;
+				var yDown = null;
+
+				function handleTouchStart(evt) {
+					xDown = evt.touches[0].clientX;
+					yDown = evt.touches[0].clientY;
+				};
+
+				function handleTouchMove(evt) {
+					if ( ! xDown || ! yDown ) {
+						return;
+					}
+
+					const xDiff = xDown - evt.touches[0].clientX;
+					const yDiff = yDown - evt.touches[0].clientY;
+
+					if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+						if ( xDiff > 0 ) {
+							document.getElementById('nav-status').checked = false;
+						} else {
+							document.getElementById('nav-status').checked = true;
+						}
+					}
+					/* reset values */
+					xDown = null;
+					yDown = null;
+				};
+
+			}());
+
+			(function() {
+				const INACTIVE_CLASS_NAME = 'inactive';
+				const TEXT_LIKE_INPUTS = [
+					'text',
+					'password',
+					'datetime',
+					'datetime-local',
+					'email',
+					'month',
+					'number',
+					'search',
+					'tel',
+					'type',
+					'url',
+					'week'
+				];
+				const labels = document.getElementsByTagName('label');
+				function switchLabelClassByFocus(/* bool */ setEventListener = false) {
+					for (let i = 0; i < labels.length; i++) {
+						for (let j = 0; j < labels[i].children.length; j++) {
+							if (
+								labels[i].children[j]
+								&& typeof labels[i].children[j].type !== 'undefined'
+								&& (
+									(
+										labels[i].children[j].tagName === 'INPUT'
+										&& TEXT_LIKE_INPUTS.indexOf(labels[i].children[j].type) >= 0
+									)
+									|| labels[i].children[j].tagName === 'TEXTAREA'
+								)
+							) {
+								const inputElement = labels[i].children[j];
+								if (!inputElement.value) {
+									labels[i].classList.add(INACTIVE_CLASS_NAME);
+								}
+								if (setEventListener) {
+									inputElement.addEventListener('focus', (event) => {
+										switchLabelClassByFocus(false);
+										event.target.parentNode.classList.remove(INACTIVE_CLASS_NAME);
+									});
+									inputElement.addEventListener('focusout', (event) => {
+										if (!event.target.value) {
+											event.target.parentNode.classList.add(INACTIVE_CLASS_NAME);
+										}
+									});
+								}
+								break;
+							}
 						}
 					}
 				}
-			}).then(function(torrentHash) { // download webpage HTML via torrents
-				console.log('using hash', torrentHash)
+				switchLabelClassByFocus(true);
+			}());
 
-				var magnet = CONFIG.magnetBase + torrentHash
-				var client = new WebTorrent()
+			/*
+			 * - autoSmoothScroll -
+			 * Licence MIT
+			 * Written by Gabriel Delépine
+			 * Current version  1.3.1 (2014-10-22)
+			 * Previous version 1.3.0 (2014-07-23)
+			 * Previous version 1.2.0 (2014-02-13)
+			 * Previous version 1.0.1 (2013-11-08)
+			 * Previous version 1.0.0 (2013-10-27)
+			 * Requirement : None, it is a framework-free function (i.e. you do not need to include any other file in your page such as jQuery)
+			 * Fork-me on github : https://github.com/Yappli/smooth-scroll
+			 * */
+			(function(window, undefined) // Code in a function to create an isolate scope
+			{
+				var height_fixed_header = 0, // For layout with header with position:fixed. Write here the height of your header for your anchor don't be hiden behind
+					speed = 500,
+					moving_frequency = 15, // Affects performance ! High number makes scroll more smooth
+					links = document.getElementsByTagName('a'),
+					href;
 
-				client.add(magnet, function(torrent) {
-					var file = torrent.files[0]
-					file.getBuffer(function(err, buffer) {
+				for(var i = 0; i < links.length; i++)
+				{
+					href = (links[i].attributes.href === undefined) ? null : links[i].attributes.href.nodeValue.toString();
+					if(href !== null && href.length > 1 && href.indexOf('#') !== -1) // href.substr(0, 1) == '#'
+					{
+						links[i].onclick = function()
+						{
+							var element,
+								href = this.attributes.href.nodeValue.toString(),
+								url = href.substr(0, href.indexOf('#')),
+								id = href.substr(href.indexOf('#') + 1);
+							if (element = document.getElementById(id))
+							{
 
-						// overwrite current page with new HTML
-						document.open()
-						document.write(buffer.toString())
-						document.close()
-					})
-				})
-			})
-		})
+								var hop_count = (speed - (speed % moving_frequency)) / moving_frequency, // Always make an integer
+									getScrollTopDocumentAtBegin = getScrollTopDocument(),
+									gap = (getScrollTopElement(element) - getScrollTopDocumentAtBegin) / hop_count;
 
-	</script>
+								if (window.history && typeof window.history.pushState === 'function')
+									window.history.pushState({}, undefined, url + '#' + id); // Change URL for modern browser
 
-</body>
-</html>
+								for (var i = 1; i <= hop_count; i++)
+								{
+									(function()
+									{
+										var hop_top_position = gap * i;
+										setTimeout(function(){ window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency * i);
+									})();
+								}
+
+								return false;
+							}
+						};
+					}
+				}
+
+				var getScrollTopElement =  function(e)
+				{
+					var top = height_fixed_header * -1;
+
+					while (e.offsetParent !== undefined && e.offsetParent !== null)
+					{
+						top += e.offsetTop + (e.clientTop !== null ? e.clientTop : 0);
+						e = e.offsetParent;
+					}
+
+					return top;
+				};
+
+				var getScrollTopDocument = function()
+				{
+					return window.pageYOffset !== undefined ? window.pageYOffset : document.documentElement.scrollTop !== undefined ? document.documentElement.scrollTop : document.body.scrollTop;
+				};
+			})(window);
+
+			window.addEventListener('scroll', function() {
+				document.getElementById('scroll-to-top').hidden = (this.pageYOffset < 150) ? true : false;
+			});
+		</script>
