@@ -148,7 +148,13 @@ h2 strong
 
 .in{font-weight: 400 !important; font-style: normal !important;}
 
-.promo i {
+.promo
+{
+	text-align: center;
+}
+
+.promo i
+{
 	color: #26a0dd;
 	font-size: 7rem;
 	display: block;
