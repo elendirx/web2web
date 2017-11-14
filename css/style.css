@@ -100,8 +100,14 @@ h1 strong
 nav
 {
 	background: #26a0dd;
-	box-shadow: none !important; 
-	-webkit-box-shadow: none !important;
+	-webkit-box-shadow: -999px 0 0 0 #26a0dd;
+	-moz-box-shadow: -999px 0 0 0 #26a0dd;
+	box-shadow: -999px 0 0 0 #26a0dd;
+}
+
+nav~label
+{
+	display: none;
 }
 
 .brand-logo
@@ -116,7 +122,8 @@ nav
 	letter-spacing: 6px;
 	z-index: 1;
 	background: #26a0dd;
-	padding-top: 0.1em;
+	padding-top: 0.2em;
+	height: 64px;
 }
 
 h2
@@ -152,6 +159,11 @@ h2 strong
 
 #work, #team{background: rgb(247, 247, 247);}
 
+nav ul
+{
+	float: right;
+}
+
 nav ul a
 {
 	font-size: 1.2rem;
@@ -162,66 +174,13 @@ nav ul a
 	padding: 0px 15px;
 }
 
-.navbar-fixed
+#index
 {
+	position: fixed;
+	height: 64px;
+	width: 100%;
 	background: #26a0dd;
-}
-
-.cd-headline.type .cd-words-wrapper {
-	vertical-align: top;
-	overflow: hidden;
-}
-
-.cd-headline.type .cd-words-wrapper::after {
-	/* vertical bar */
-	content: '';
-	position: absolute;
-	right: 0;
-	top: 50%;
-	bottom: auto;
-	-webkit-transform: translateY(-50%);
-	-moz-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-	transform: translateY(-50%);
-	height: 90%;
-	width: 1px;
-	background-color: #aebcb9;
-}
-
-.cd-headline.type .cd-words-wrapper.waiting::after {
-	-webkit-animation: cd-pulse 1s infinite;
-	-moz-animation: cd-pulse 1s infinite;
-	animation: cd-pulse 1s infinite;
-}
-
-.cd-headline.type .cd-words-wrapper.selected {
-	background-color: #fff;
-}
-
-.cd-headline.type .cd-words-wrapper.selected::after {
-	visibility: hidden;
-}
-
-.cd-headline.type .cd-words-wrapper.selected b {
-	color: #26a0dd;
-}
-
-.cd-headline.type b {
-	visibility: hidden;
-}
-
-.cd-headline.type b.is-visible {
-	visibility: visible;
-}
-
-.cd-headline.type i {
-	position: absolute;
-	visibility: hidden;
-}
-.cd-headline.type i.in {
-	position: relative;
-	visibility: visible;
+	z-index: 1;
 }
 
 @-webkit-keyframes cd-pulse {
@@ -724,11 +683,6 @@ footer .plus a::before
 	content: url(../img/google-plus.svg);
 }
 
-nav .container
-{
-	float: right;
-}
-
 @media only screen and (max-width: 993px)
 {
 
@@ -754,13 +708,15 @@ nav .container
 
 	nav+label+label
 	{
+		display: block;
 		cursor: pointer;
 		position: absolute;
-		top: 0.5em;
+		top: 0.8em;
 		right: 2em;
 		color: white;
 		border: 2px solid #fff;
 		padding: 0.4em 0.5em 0.4em 2em;
+		background: #26a0dd;
 	}
 
 	nav+label+label:before
