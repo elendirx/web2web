@@ -253,7 +253,7 @@ footer
 
 .parallax-container
 {
-	height: 500px;
+	height: 300px;
 	width: 100%;
 	overflow: hidden;
 }
@@ -261,16 +261,16 @@ footer
 .parallax
 {
 	position: relative;
-	height: 500px;
+	height: 300px;
 	width: calc(100% + 17px);
 	overflow: hidden;
 	overflow-y: scroll;
 	-webkit-perspective: 1px;
 	perspective: 1px;
 	padding-right: 17px;
-	background: url(../img/omnia.jpg) fixed;
+	background: url(../img/omnia.jpg) fixed center;
 }
-
+/*
 .parallax__layer
 {
 	position: absolute;
@@ -302,7 +302,7 @@ footer
 	transform: translateZ(0);
 	background: url(../img/c.svg) center center no-repeat;
 }
-
+*/
 body>hr,
 main>hr
 {
@@ -581,7 +581,7 @@ form .submit input
 	transform: scale(1); 
 }
 
-footer [href="#index"]
+#scroll-to-top
 {
 	position: fixed;
 	width: 4rem;
@@ -598,12 +598,12 @@ footer [href="#index"]
 	-moz-transition: opacity 1s, bottom 2s;
 }
 
-[href="#index"] i
+#scroll-to-top i
 {
 	font-size: 3em;
 }
 
-footer [href="#index"][hidden]
+#scroll-to-top[hidden]
 {
 	opacity: 0;
 	bottom: -9rem;
