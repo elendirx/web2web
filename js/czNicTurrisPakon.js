@@ -1399,7 +1399,17 @@ const czNicTurrisPakon = class {
 		return new Promise((resolve) => {
 			const resultsTable = this.settings.resultsTable;
 			const virtualTable = document.createElement('table');
-			const tHead = resultsTable ? resultsTable.tHead : null;
+			if (resultsTable) {
+				const tHead = resultsTable.tHead;
+				while (resultsTable.firstChild) {
+					resultsTable.removeChild(resultsTable.firstChild);
+				}
+				virtualTable.appendChild(tHead);
+			} else {
+				virtualTable.appendChild(this.createTHead());
+			}
+			/*
+			const tHead = resultsTable.tHead;
 			while (resultsTable.firstChild) {
 				resultsTable.removeChild(resultsTable.firstChild);
 			}
@@ -1408,6 +1418,8 @@ const czNicTurrisPakon = class {
 			} else {
 				virtualTable.appendChild(this.createTHead());
 			}
+			*/
+			
 			const tbody = document.createElement('tbody');
 			// @todo : sort this.settings.tableHeader by item keys
 			rowsLoop:
