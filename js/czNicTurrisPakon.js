@@ -1136,9 +1136,9 @@ const czNicTurrisPakon = class {
 	{
 		this.createSourceUrl(); // set into settings
 
-		const evtSource = new EventSource(this.settings.eventSource.completeUrl);
+		//const evtSource = new EventSource(this.settings.eventSource.completeUrl);
 
-		console.log(evtSource);
+		//console.log(evtSource);
 /*
 		function eventMessage(event) {
 			const messageArray = JSON.parse(event.data);
@@ -1399,11 +1399,14 @@ const czNicTurrisPakon = class {
 		return new Promise((resolve) => {
 			const resultsTable = this.settings.resultsTable;
 			const virtualTable = document.createElement('table');
+			let tHead = null;
 			if (resultsTable) {
-				const tHead = resultsTable.tHead;
+				tHead = resultsTable.tHead;
 				while (resultsTable.firstChild) {
 					resultsTable.removeChild(resultsTable.firstChild);
 				}
+			}
+			if (tHead) {
 				virtualTable.appendChild(tHead);
 			} else {
 				virtualTable.appendChild(this.createTHead());
