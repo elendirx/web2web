@@ -1988,7 +1988,7 @@ const czNicTurrisPakon = class {
 	 */
 	flush()
 	{
-		if (this.virtualTable) {
+		if (this.virtualTable && this.settings.resultsTable) {
 			const resultsTable = this.settings.resultsTable;
 			for (let i = 0; i < resultsTable.attributes.length; i++) {
 				this.virtualTable.setAttribute(resultsTable.attributes[i].nodeName, resultsTable.attributes[i].nodeValue);
@@ -1997,7 +1997,7 @@ const czNicTurrisPakon = class {
 			this.settings.resultsTable = this.virtualTable;
 		}
 
-		if (this.virtualStatistics) {
+		if (this.virtualStatistics && this.settings.statisticsElement) {
 			const resultsElement = this.settings.statisticsElement;
 			for (let i = 0; i < resultsElement.attributes.length; i++) {
 				this.virtualStatistics.setAttribute(resultsElement.attributes[i].nodeName, resultsElement.attributes[i].nodeValue);
