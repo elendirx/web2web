@@ -741,7 +741,7 @@ const czNicTurrisPakon = class {
 						'https',
 						'http',
 					],
-					'linkTextContent': '\u29C9', // TWO JOINED SQUARES ⧉
+					'linkTextContent': '\u29C9', // TWO JOINED SQUARES â§‰
 					'linkTitle': 'Open this hostname as URL in new window',
 				},
 				'srcMAC': {
@@ -864,9 +864,9 @@ const czNicTurrisPakon = class {
 			return this[0].toUpperCase() + this.slice(1);
 		}
 
-		String.prototype.truncate = function(maxLen = 1, append = '\u2026', clever = false) { // \u2026 is HORIZONTAL ELLIPSIS ( … )
+		String.prototype.truncate = function(maxLen = 1, append = '\u2026', clever = false) { // \u2026 is HORIZONTAL ELLIPSIS ( â€¦ )
 			if (this.length > maxLen) {
-				const regular = new RegExp('^.{1,' + maxLen + '}(?=[\\s !-\\/:-@\\[-`\\{-¿])', 'u'); // eats a lot of resources :(
+				const regular = new RegExp('^.{1,' + maxLen + '}(?=[\\s !-\\/:-@\\[-`\\{-Âż])', 'u'); // eats a lot of resources :(
 				let parts = [];
 				maxLen = maxLen - append.length;
 				if (maxLen < 1) {
@@ -908,7 +908,7 @@ const czNicTurrisPakon = class {
 			return hString + HOURS_SEPARATOR + mString + MINUTES_SEPARATOR + sString;
 		};
 
-		Object.defineProperty(Array.prototype, 'frequencyUnique', { // cannot use simple: Array.prototype.frequencyUnique = func…
+		Object.defineProperty(Array.prototype, 'frequencyUnique', { // cannot use simple: Array.prototype.frequencyUnique = funcâ€¦
 			enumerable: false,
 			value: function frequencyUnique() {
 				const a = [];
@@ -1214,8 +1214,8 @@ const czNicTurrisPakon = class {
 			var sortedUniqueHostnameKeys = Object.keys(inArray)
 				.map(function(k) { return { key: k, value: inArray[k] }; })
 				.sort(function(a, b) { return b.value.length - a.value.length; });
-		} else if (false) { // @todo : another sorting method (like service name, date, …) not implemented yet
-			var sortedUniqueHostnameKeys = '…'; // @todo
+		} else if (false) { // @todo : another sorting method (like service name, date, â€¦) not implemented yet
+			var sortedUniqueHostnameKeys = 'â€¦'; // @todo
 		} // some sorting methods cannot be done here and must be done after aggregation
 		return sortedUniqueHostnameKeys;
 	}
@@ -1342,7 +1342,7 @@ const czNicTurrisPakon = class {
 					resolve(result);
 				});
 			} else if (false) { // @todo : add more grouping methods
-				// …
+				// â€¦
 			}
 		});
 	}
@@ -1353,7 +1353,7 @@ const czNicTurrisPakon = class {
 		return new Promise((resolve) => {
 			const list = this.settings.statisticsData.graphs.createFor;
 			const lastKey = Object.keys(list)[Object.keys(list).length - 1];
-			for (const i in list) { // @todo : refactor… remove depricated PROTO variable names
+			for (const i in list) { // @todo : refactorâ€¦ remove depricated PROTO variable names
 				const openReq = this.idb.open('PakonLive', 1.2);
 				openReq.onsuccess = function() {
 					const db = openReq.result;
@@ -1475,7 +1475,7 @@ const czNicTurrisPakon = class {
 			this.getDataFromColumns().then(() => {
 				const list = this.settings.statisticsData.graphs.createFor;
 				const lastKey = Object.keys(list)[Object.keys(list).length - 1];
-				for (const i in list) { // @todo : refactor… better names than protoXYZ (reference to proto column)
+				for (const i in list) { // @todo : refactorâ€¦ better names than protoXYZ (reference to proto column)
 
 					const protoRoot = document.createElement('div');
 					protoRoot.id = i;
@@ -1525,11 +1525,11 @@ const czNicTurrisPakon = class {
 		return new Promise((resolve) => {
 			const inp = this.settings.controlForm.timeLimitationInputs;
 
-			if (this.settings.timeLimitation.from) {
+			if (inp.dateFrom && inp.timeFrom && this.settings.timeLimitation.from) {
 				inp.dateFrom.value = this.settings.timeLimitation.from.toDateInput();
 				inp.timeFrom.value = this.settings.timeLimitation.from.toTimeInput();
 			}
-			if (this.settings.timeLimitation.to) {
+			if (inp.dateTo && inp.timeTo && this.settings.timeLimitation.to) {
 				inp.dateTo.value = this.settings.timeLimitation.to.toDateInput();
 				inp.timeTo.value = this.settings.timeLimitation.to.toTimeInput();
 			}
@@ -1546,19 +1546,23 @@ const czNicTurrisPakon = class {
 
 			for (const i in formControls) {
 				if (status) {
-					if (formControls[i].nodeType) {
+					if (formControls[i] && formControls[i].nodeType === Node.ELEMENT_NODE) {
 						formControls[i].disabled = true;
 					} else {
 						for (const ii in formControls[i]) {
-							formControls[i][ii].disabled = true;
+							if (formControls[i][ii]) {
+								formControls[i][ii].disabled = true;
+							}
 						}
 					}
 				} else {
-					if (formControls[i].nodeType) {
+					if (formControls[i] && formControls[i].nodeType === Node.ELEMENT_NODE) {
 						formControls[i].disabled = false;
 					} else {
 						for (const ii in formControls[i]) {
-							formControls[i][ii].disabled = false;
+							if (formControls[i][ii]) {
+								formControls[i][ii].disabled = false;
+							}
 						}
 					}
 				}
@@ -1586,7 +1590,7 @@ const czNicTurrisPakon = class {
 					Math.round(( 100 / this.settings['max' + suffixes[i].capitalize()] ) * currentCell.getAttribute('data-raw-content-' + suffixes[i]))
 				);
 				currentCell.removeAttribute('data-raw-content-' + suffixes[i]);
-				break; // one cell can have just one data-raw-…
+				break; // one cell can have just one data-raw-â€¦
 			}
 		}
 		return true;
@@ -1876,7 +1880,7 @@ const czNicTurrisPakon = class {
 	}
 
 
-	applyFilters() // @ depricated … soon :)
+	applyFilters() // @ depricated â€¦Â soon :)
 	{
 		if (!this.settings.filterBy) {
 			return true;
@@ -1906,19 +1910,19 @@ const czNicTurrisPakon = class {
 		let toString = '';
 		const inp = this.settings.controlForm.timeLimitationInputs;
 		const d = new Date();
-		if (inp.dateTo.value) {
+		if (inp.dateTo && inp.dateTo.value) {
 			const part1 = inp.dateTo.value.substr(0, 4);
 			const part2 = inp.dateTo.value.substr(5);
 			toString += part2.replace('-', ', ') + ', ' + part1 + ', ';
 		} else {
 			toString += (d.getMonth()+1) + ', ' + d.getDate() + ', ' + d.getFullYear() + ', ';
 		}
-		if (inp.timeFrom.value) {
+		if (inp.timeFrom && inp.timeFrom.value) {
 			toString += inp.timeTo.value;
 		} else {
 			toString += '23:59:59';
 		}
-		if (inp.dateFrom.value) {
+		if (inp.dateFrom && inp.dateFrom.value) {
 			const part1 = inp.dateFrom.value.substr(0, 4);
 			const part2 = inp.dateFrom.value.substr(5);
 			fromString += part2.replace('-', ', ') + ', ' + part1 + ', ';
@@ -1926,7 +1930,7 @@ const czNicTurrisPakon = class {
 			d.setDate(d.getDate() - this.settings.timeLimitation.suggestedInterval);
 			fromString += (d.getMonth()+1) + ', ' + d.getDate() + ', ' + d.getFullYear() + ', ';
 		}
-		if (inp.timeFrom.value) {
+		if (inp.timeFrom && inp.timeFrom.value) {
 			fromString += inp.timeFrom.value;
 		} else {
 			fromString += '00:00:00';
@@ -2028,27 +2032,29 @@ const czNicTurrisPakon = class {
 		const CHANGE_EVENT_NAME = 'change';
 		const inputs = this.settings.controlForm;
 		for (const i in inputs) {
-			if (inputs[i].nodeType) {
+			if (inputs[i] && inputs[i].nodeType) {
 				inputs[i].addEventListener(CHANGE_EVENT_NAME, this.universalFormHook.bind(this));
 			} else {
 				for (const ii in inputs[i]) {
-					inputs[i][ii].addEventListener(CHANGE_EVENT_NAME, () => {
-						this.setSyncWorkTo(true).then(() => {
-							this.settings.filterBy = this.FILTER_BY_OPTIONS['DATETIME']; // change settings of current filter
-							this.readControlForm();
-							this.loadFreshHits();
-							this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
-							this.applyFilters();
-							this.createFullTable().then(() => {
-								this.improveTableUX(); // post render improvement
+					if (inputs[i][ii]) {
+						inputs[i][ii].addEventListener(CHANGE_EVENT_NAME, () => {
+							this.setSyncWorkTo(true).then(() => {
+								this.settings.filterBy = this.FILTER_BY_OPTIONS['DATETIME']; // change settings of current filter
+								this.readControlForm();
+								this.loadFreshHits();
+								this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
+								this.applyFilters();
+								this.createFullTable().then(() => {
+									this.improveTableUX(); // post render improvement
+								});
+								this.createFullStatistic().then(() => {
+									this.makeFullGraphs(); // post render improvement
+								});
+								this.flush(); // place virtual DOM elements instead of real site elements
+								this.setSyncWorkTo(false);
 							});
-							this.createFullStatistic().then(() => {
-								this.makeFullGraphs(); // post render improvement
-							});
-							this.flush(); // place virtual DOM elements instead of real site elements
-							this.setSyncWorkTo(false);
-						});
-					}, false);
+						}, false);
+					}
 				}
 			}
 		}
@@ -2093,7 +2099,7 @@ const czNicTurrisPakon = class {
 	<script src="czNicTurrisPakon.js"></script>
 	<script>
 		const cntp = new czNicTurrisPakon(window);
-		//cntp.settings = {'lang': 'cs', '…': true};
+		//cntp.settings = {'lang': 'cs', 'â€¦': true};
 		cntp.run();
 		//const cs = window.document.currentScript;
 		//cs.parentNode.removeChild(cs);
