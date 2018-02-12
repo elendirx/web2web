@@ -1399,7 +1399,7 @@ const czNicTurrisPakon = class {
 		return new Promise((resolve) => {
 			const resultsTable = this.settings.resultsTable;
 			const virtualTable = document.createElement('table');
-			const tHead = resultsTable.tHead;
+			const tHead = resultsTable ? resultsTable.tHead : null;
 			while (resultsTable.firstChild) {
 				resultsTable.removeChild(resultsTable.firstChild);
 			}
