@@ -757,8 +757,8 @@ const czNicTurrisPakon = class {
 					},
 				},
 			},
-			'resultsTable': document.getElementById('tabulka'),
-			'statisticsElement': document.getElementById('statistiky'),
+			'resultsTable': document.getElementById('pakon-results-table'),
+			'statisticsElement': document.getElementById('pakon-results-statistics'),
 			'controlForm': {
 				'timeLimitationInputs': {
 					'dateFrom': document.getElementById('date-from'),
@@ -1408,18 +1408,6 @@ const czNicTurrisPakon = class {
 			} else {
 				virtualTable.appendChild(this.createTHead());
 			}
-			/*
-			const tHead = resultsTable.tHead;
-			while (resultsTable.firstChild) {
-				resultsTable.removeChild(resultsTable.firstChild);
-			}
-			if (tHead) {
-				virtualTable.appendChild(tHead);
-			} else {
-				virtualTable.appendChild(this.createTHead());
-			}
-			*/
-			
 			const tbody = document.createElement('tbody');
 			// @todo : sort this.settings.tableHeader by item keys
 			rowsLoop:
