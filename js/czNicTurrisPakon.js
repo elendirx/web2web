@@ -1520,6 +1520,7 @@ setTimeout(() => {
 				}
 			}
 			this.virtualStatistics = container;
+			console.log('vs:');
 			console.log(this.virtualStatistics);
 		});
 	}
@@ -1755,6 +1756,7 @@ setTimeout(() => {
 			return false; // Chart.js library is missing
 		}
 		const CANVAS_TAG_NAME = 'CANVAS';
+		console.log('dělám grafy');
 		const statisticParts = this.settings.statisticsElement.children; // real already-drawed element
 		for (let i = 0; i < statisticParts.length; i++) {
 			if (statisticParts[i].classList.contains('chart')) {
@@ -2089,9 +2091,11 @@ setTimeout(() => { //////////////////////////////////
 			this.groupData().then(() => {
 				this.applyFilters(); // works with virtual DOM
 				this.createFullStatistic().then(() => {
+					this.flush();
 					this.makeFullGraphs(); // pwitch statement testing for which is visible but can not pass the source.close() to my event directly ost render improvement
 				});
 				this.createFullTable().then(() => {
+					this.flush();
 					this.improveTableUX(); // post render improvement
 				});
 				this.flush(); // place virtual DOM elements instead of real site elements
