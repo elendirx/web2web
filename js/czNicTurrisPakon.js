@@ -1513,8 +1513,6 @@ setTimeout(() => {
 				}
 			});
 
-console.log(container);
-
 			if (this.virtualStatistics) {
 				const nodes = this.virtualStatistics;
 				while (nodes.firstChild) { // node is deleted automatically after append
@@ -1522,6 +1520,7 @@ console.log(container);
 				}
 			}
 			this.virtualStatistics = container;
+			console.log(this.virtualStatistics);
 		});
 	}
 
@@ -2083,7 +2082,7 @@ console.log(container);
 		this.setSyncWorkTo(true).then(() => {
 			this.readControlForm();
 			this.loadFreshHits(); // from backend
-setTimeout(() => {
+setTimeout(() => { //////////////////////////////////
 			this.storeHitsToIndexedDB();
 			this.inicializeHTMLHooks();
 			this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
@@ -2098,7 +2097,7 @@ setTimeout(() => {
 				this.flush(); // place virtual DOM elements instead of real site elements
 				this.setSyncWorkTo(false);
 			});
-}, 1200);
+}, 1200); ///////////////////
 		});
 
 		return true;
