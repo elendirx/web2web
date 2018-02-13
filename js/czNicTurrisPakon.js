@@ -1754,6 +1754,7 @@ setTimeout(() => {
 			return false; // Chart.js library is missing
 		}
 		const CANVAS_TAG_NAME = 'CANVAS';
+		console.log(this.settings.statisticsElement);
 		const statisticParts = this.settings.statisticsElement.children; // real already-drawed element
 		for (let i = 0; i < statisticParts.length; i++) {
 			if (statisticParts[i].classList.contains('chart')) {
