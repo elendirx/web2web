@@ -2063,7 +2063,6 @@ setTimeout(() => {
 								});
 								this.flush(); // place virtual DOM elements instead of real site elements
 								this.setSyncWorkTo(false);
-								resolve(true);
 							});
 						}, false);
 					}
