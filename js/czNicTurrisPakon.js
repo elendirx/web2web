@@ -773,7 +773,7 @@ const czNicTurrisPakon = class {
 			'timeLimitation': {
 				'from': null,
 				'to': null,
-				'suggestedInterval': 30, // in days
+				'suggestedInterval': 90, // in days
 			},
 			'tableHeader': {
 				10: ['id', 'n ID'], // id
