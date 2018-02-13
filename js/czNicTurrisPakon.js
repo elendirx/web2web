@@ -1132,6 +1132,8 @@ const czNicTurrisPakon = class {
 	{
 		const messageArray = JSON.parse(event.data);
 		this.dataStructure[messageArray.join()] = messageArray;
+
+		console.log(this.dataStructure[messageArray.join()]);
 /*
 		const evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
 		evtSource.onmessage = this.eventMessage; // regenerate
@@ -2048,19 +2050,17 @@ const czNicTurrisPakon = class {
 								this.settings.filterBy = this.FILTER_BY_OPTIONS['DATETIME']; // change settings of current filter
 								this.readControlForm();
 								this.loadFreshHits();
-								setTimeout(() => {
-									this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
-									this.applyFilters();
-									this.createFullTable().then(() => {
-										this.improveTableUX(); // post render improvement
-									});
-									this.createFullStatistic().then(() => {
-										this.makeFullGraphs(); // post render improvement
-									});
-									this.flush(); // place virtual DOM elements instead of real site elements
-									this.setSyncWorkTo(false);
-									resolve(true);
-								}, 1200);
+								this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
+								this.applyFilters();
+								this.createFullTable().then(() => {
+									this.improveTableUX(); // post render improvement
+								});
+								this.createFullStatistic().then(() => {
+									this.makeFullGraphs(); // post render improvement
+								});
+								this.flush(); // place virtual DOM elements instead of real site elements
+								this.setSyncWorkTo(false);
+								resolve(true);
 							});
 						}, false);
 					}
@@ -2081,6 +2081,7 @@ const czNicTurrisPakon = class {
 		this.setSyncWorkTo(true).then(() => {
 			this.readControlForm();
 			this.loadFreshHits(); // from backend
+setTimeout(() => {
 			this.storeHitsToIndexedDB();
 			this.inicializeHTMLHooks();
 			this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
@@ -2095,6 +2096,7 @@ const czNicTurrisPakon = class {
 				this.flush(); // place virtual DOM elements instead of real site elements
 				this.setSyncWorkTo(false);
 			});
+}, 1200);
 		});
 
 		return true;
