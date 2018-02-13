@@ -1136,9 +1136,9 @@ const czNicTurrisPakon = class {
 		const evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
 		evtSource.onmessage = this.eventMessage; // regenerate
 */
-setTimeout(() => {
+setTimeout(() => { ////////////////
 		event.target.close();
-}, 2000);
+}, 3000); ////////////////////
 	}
 
 
@@ -2098,7 +2098,7 @@ setTimeout(() => { //////////////////////////////////
 				this.flush(); // place virtual DOM elements instead of real site elements
 				this.setSyncWorkTo(false);
 			});
-}, 1200); ///////////////////
+}, 2200); ///////////////////
 		});
 
 		return true;
