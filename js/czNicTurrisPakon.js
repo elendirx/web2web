@@ -1149,12 +1149,12 @@ const czNicTurrisPakon = class {
 	{
 		this.createSourceUrl(); // set into settings
 
+		if (!this.dataStructure) {
+			this.dataStructure = [];
+		}
+
 		const evtSource = new EventSource(this.settings.eventSource.completeUrl);
 		evtSource.onmessage = this.eventMessage;
-
-		if (!this.dataStructure) {
-			this.dataStructure = dataStructure; // @todo : inicialize real dataStructure (this is dummy data)
-		}
 	}
 
 	/*
