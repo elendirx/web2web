@@ -2088,7 +2088,7 @@ setTimeout(() => {
 			this.groupData().then(() => {
 				this.applyFilters(); // works with virtual DOM
 				this.createFullStatistic().then(() => {
-					this.makeFullGraphs(); // post render improvement
+					this.makeFullGraphs(); // pwitch statement testing for which is visible but can not pass the source.close() to my event directly ost render improvement
 				});
 				this.createFullTable().then(() => {
 					this.improveTableUX(); // post render improvement
