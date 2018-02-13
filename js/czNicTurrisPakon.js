@@ -1132,13 +1132,13 @@ const czNicTurrisPakon = class {
 	{
 		const messageArray = JSON.parse(event.data);
 		this.dataStructure[messageArray.join()] = messageArray;
-
-		console.log(this.dataStructure[messageArray.join()]);
 /*
 		const evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
 		evtSource.onmessage = this.eventMessage; // regenerate
 */
-		//event.target.close();
+setTimeout(() => {
+		event.target.close();
+}, 2000);
 	}
 
 
