@@ -2050,16 +2050,19 @@ const czNicTurrisPakon = class {
 								this.settings.filterBy = this.FILTER_BY_OPTIONS['DATETIME']; // change settings of current filter
 								this.readControlForm();
 								this.loadFreshHits();
-								this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
-								this.applyFilters();
-								this.createFullTable().then(() => {
-									this.improveTableUX(); // post render improvement
-								});
-								this.createFullStatistic().then(() => {
-									this.makeFullGraphs(); // post render improvement
-								});
-								this.flush(); // place virtual DOM elements instead of real site elements
-								this.setSyncWorkTo(false);
+								setTimeout(() => {
+									this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
+									this.applyFilters();
+									this.createFullTable().then(() => {
+										this.improveTableUX(); // post render improvement
+									});
+									this.createFullStatistic().then(() => {
+										this.makeFullGraphs(); // post render improvement
+									});
+									this.flush(); // place virtual DOM elements instead of real site elements
+									this.setSyncWorkTo(false);
+									resolve(true);
+								}, 1200);
 							});
 						}, false);
 					}
