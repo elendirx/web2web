@@ -2055,7 +2055,7 @@ setTimeout(() => { ////////////////
 								this.readControlForm();
 								this.loadFreshHits();
 								this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
-								this.applyFilters();
+								//this.applyFilters();
 								this.createFullTable().then(() => {
 									this.improveTableUX(); // post render improvement
 								});
@@ -2089,7 +2089,7 @@ setTimeout(() => { //////////////////////////////////
 			this.inicializeHTMLHooks();
 			this.fillTimeLimitationForm().then(() => {}); // from this.settings.timeLimitation
 			this.groupData().then(() => {
-				this.applyFilters(); // works with virtual DOM
+				//this.applyFilters(); // works with virtual DOM
 				this.createFullStatistic().then(() => {
 					this.makeFullGraphs(); // pwitch statement testing for which is visible but can not pass the source.close() to my event directly ost render improvement
 				});
