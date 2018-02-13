@@ -1128,6 +1128,22 @@ const czNicTurrisPakon = class {
 	}
 
 
+	eventMessage(event)
+	{
+		console.log(event);
+
+		/*
+			const messageArray = JSON.parse(event.data);
+			dataStructure[messageArray.join()] = messageArray;
+			refreshDataStructure();
+
+			evtSource.close();
+			evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
+			evtSource.onmessage = eventMessage; // regenerate
+		*/
+	}
+
+
 	/*
 	 * @todo : description
 	 * @returns {Boolean}
@@ -1137,20 +1153,7 @@ const czNicTurrisPakon = class {
 		this.createSourceUrl(); // set into settings
 
 		const evtSource = new EventSource(this.settings.eventSource.completeUrl);
-
-		console.log(evtSource);
-/*
-		function eventMessage(event) {
-			const messageArray = JSON.parse(event.data);
-			dataStructure[messageArray.join()] = messageArray;
-			refreshDataStructure();
-
-			evtSource.close();
-			evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
-			evtSource.onmessage = eventMessage; // regenerate
-		}
-		evtSource.onmessage = eventMessage;
-*/
+		evtSource.onmessage = this.eventMessage;
 
 		if (!this.dataStructure) {
 			this.dataStructure = dataStructure; // @todo : inicialize real dataStructure (this is dummy data)
