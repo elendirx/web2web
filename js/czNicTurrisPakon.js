@@ -1130,7 +1130,7 @@ const czNicTurrisPakon = class {
 
 	eventMessage(event)
 	{
-		console.log(event);
+		event.target.close();
 
 		/*
 			const messageArray = JSON.parse(event.data);
