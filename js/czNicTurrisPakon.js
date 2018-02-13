@@ -1422,6 +1422,7 @@ setTimeout(() => { ////////////////
 					for (const ii in this.settings.tableHeader) { // tbody works aginst thead
 						const cell = document.createElement('td');
 						if (this.settings.tableHeader[ii][0] === 'id') { // it's already time for switch() ?
+							console.log(this.dataStructure[i]['ids']);
 							if (this.dataStructure[i]['ids'].length < 9) {
 								cell.title = '[' + this.dataStructure[i]['ids'].join(', ').truncate(this.settings.strLen) + ']';
 							}
