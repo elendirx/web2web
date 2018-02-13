@@ -1132,7 +1132,6 @@ const czNicTurrisPakon = class {
 	{
 		const messageArray = JSON.parse(event.data);
 		this.dataStructure[messageArray.join()] = messageArray;
-		console.log(this.dataStructure);
 /*
 		const evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
 		evtSource.onmessage = this.eventMessage; // regenerate
@@ -1155,6 +1154,8 @@ const czNicTurrisPakon = class {
 
 		const evtSource = new EventSource(this.settings.eventSource.completeUrl);
 		evtSource.onmessage = this.eventMessage.bind(this);
+
+		console.log(this.dataStructure);
 	}
 
 	/*
