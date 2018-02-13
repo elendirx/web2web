@@ -1136,7 +1136,7 @@ const czNicTurrisPakon = class {
 		const evtSource = new EventSource(ESUrl + '&timeout=' + Math.round(+new Date()/1000));
 		evtSource.onmessage = this.eventMessage; // regenerate
 */
-		event.target.close();
+		//event.target.close();
 	}
 
 
@@ -1154,8 +1154,6 @@ const czNicTurrisPakon = class {
 
 		const evtSource = new EventSource(this.settings.eventSource.completeUrl);
 		evtSource.onmessage = this.eventMessage.bind(this);
-
-		console.log(this.dataStructure);
 	}
 
 	/*
