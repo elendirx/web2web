@@ -741,7 +741,7 @@ const czNicTurrisPakon = class {
 						'https',
 						'http',
 					],
-					'linkTextContent': '\u29C9', // TWO JOINED SQUARES â§‰
+					'linkTextContent': '\u29C9', // TWO JOINED SQUARES ⧉
 					'linkTitle': 'Open this hostname as URL in new window',
 				},
 				'srcMAC': {
@@ -864,9 +864,9 @@ const czNicTurrisPakon = class {
 			return this[0].toUpperCase() + this.slice(1);
 		}
 
-		String.prototype.truncate = function(maxLen = 1, append = '\u2026', clever = false) { // \u2026 is HORIZONTAL ELLIPSIS ( â€¦ )
+		String.prototype.truncate = function(maxLen = 1, append = '\u2026', clever = false) { // \u2026 is HORIZONTAL ELLIPSIS ( … )
 			if (this.length > maxLen) {
-				const regular = new RegExp('^.{1,' + maxLen + '}(?=[\\s !-\\/:-@\\[-`\\{-Âż])', 'u'); // eats a lot of resources :(
+				const regular = new RegExp('^.{1,' + maxLen + '}(?=[\\s !-\\/:-@\\[-`\\{-¿])', 'u'); // eats a lot of resources :(
 				let parts = [];
 				maxLen = maxLen - append.length;
 				if (maxLen < 1) {
@@ -908,7 +908,7 @@ const czNicTurrisPakon = class {
 			return hString + HOURS_SEPARATOR + mString + MINUTES_SEPARATOR + sString;
 		};
 
-		Object.defineProperty(Array.prototype, 'frequencyUnique', { // cannot use simple: Array.prototype.frequencyUnique = funcâ€¦
+		Object.defineProperty(Array.prototype, 'frequencyUnique', { // cannot use simple: Array.prototype.frequencyUnique = func…
 			enumerable: false,
 			value: function frequencyUnique() {
 				const a = [];
@@ -1136,9 +1136,9 @@ const czNicTurrisPakon = class {
 	{
 		this.createSourceUrl(); // set into settings
 
-		//const evtSource = new EventSource(this.settings.eventSource.completeUrl);
+		const evtSource = new EventSource(this.settings.eventSource.completeUrl);
 
-		//console.log(evtSource);
+		console.log(evtSource);
 /*
 		function eventMessage(event) {
 			const messageArray = JSON.parse(event.data);
@@ -1214,8 +1214,8 @@ const czNicTurrisPakon = class {
 			var sortedUniqueHostnameKeys = Object.keys(inArray)
 				.map(function(k) { return { key: k, value: inArray[k] }; })
 				.sort(function(a, b) { return b.value.length - a.value.length; });
-		} else if (false) { // @todo : another sorting method (like service name, date, â€¦) not implemented yet
-			var sortedUniqueHostnameKeys = 'â€¦'; // @todo
+		} else if (false) { // @todo : another sorting method (like service name, date, …) not implemented yet
+			var sortedUniqueHostnameKeys = '…'; // @todo
 		} // some sorting methods cannot be done here and must be done after aggregation
 		return sortedUniqueHostnameKeys;
 	}
@@ -1342,7 +1342,7 @@ const czNicTurrisPakon = class {
 					resolve(result);
 				});
 			} else if (false) { // @todo : add more grouping methods
-				// â€¦
+				// …
 			}
 		});
 	}
@@ -1353,7 +1353,7 @@ const czNicTurrisPakon = class {
 		return new Promise((resolve) => {
 			const list = this.settings.statisticsData.graphs.createFor;
 			const lastKey = Object.keys(list)[Object.keys(list).length - 1];
-			for (const i in list) { // @todo : refactorâ€¦ remove depricated PROTO variable names
+			for (const i in list) { // @todo : refactor… remove depricated PROTO variable names
 				const openReq = this.idb.open('PakonLive', 1.2);
 				openReq.onsuccess = function() {
 					const db = openReq.result;
@@ -1478,7 +1478,7 @@ const czNicTurrisPakon = class {
 			this.getDataFromColumns().then(() => {
 				const list = this.settings.statisticsData.graphs.createFor;
 				const lastKey = Object.keys(list)[Object.keys(list).length - 1];
-				for (const i in list) { // @todo : refactorâ€¦ better names than protoXYZ (reference to proto column)
+				for (const i in list) { // @todo : refactor… better names than protoXYZ (reference to proto column)
 
 					const protoRoot = document.createElement('div');
 					protoRoot.id = i;
@@ -1593,7 +1593,7 @@ const czNicTurrisPakon = class {
 					Math.round(( 100 / this.settings['max' + suffixes[i].capitalize()] ) * currentCell.getAttribute('data-raw-content-' + suffixes[i]))
 				);
 				currentCell.removeAttribute('data-raw-content-' + suffixes[i]);
-				break; // one cell can have just one data-raw-â€¦
+				break; // one cell can have just one data-raw-…
 			}
 		}
 		return true;
@@ -1832,15 +1832,17 @@ const czNicTurrisPakon = class {
 		const tBodies = this.settings.resultsTable.tBodies;
 		if (tBodies.length) {
 			const columnPosition = this.getColumnPositionBy('dur');
-			const rows = tBodies[0].rows;
-			for (let i = 0; i < rows.length; i++) {
-				const rawContent = rows[i].children[columnPosition].textContent.hms2Secs(this.settings.lang);
-				rows[i].children[columnPosition].setAttribute('data-raw-content-dur', rawContent);
-				if (rawContent > this.settings.maxDur) {
-					this.settings.maxDur = rawContent;
+			if (columnPosition ) {
+				const rows = tBodies[0].rows;
+				for (let i = 0; i < rows.length; i++) {
+					const rawContent = rows[i].children[columnPosition].textContent.hms2Secs(this.settings.lang);
+					rows[i].children[columnPosition].setAttribute('data-raw-content-dur', rawContent);
+					if (rawContent > this.settings.maxDur) {
+						this.settings.maxDur = rawContent;
+					}
 				}
+				return this.settings.maxDur;
 			}
-			return this.settings.maxDur;
 		}
 		return false;
 	}
@@ -1851,15 +1853,17 @@ const czNicTurrisPakon = class {
 		const tBodies = this.settings.resultsTable.tBodies;
 		if (tBodies.length) {
 			const columnPosition = this.getColumnPositionBy(col);
-			const rows = tBodies[0].rows;
-			for (let i = 0; i < rows.length; i++) {
-				const rawContent = Number(rows[i].children[columnPosition].textContent.fromLocaleString());
-				rows[i].children[columnPosition].setAttribute('data-raw-content-' + col, rawContent);
-				if (rawContent > this.settings['max' + col.capitalize()]) {
-					this.settings['max' + col.capitalize()] = rawContent;
+			if (columnPosition) {
+				const rows = tBodies[0].rows;
+				for (let i = 0; i < rows.length; i++) {
+					const rawContent = Number(rows[i].children[columnPosition].textContent.fromLocaleString());
+					rows[i].children[columnPosition].setAttribute('data-raw-content-' + col, rawContent);
+					if (rawContent > this.settings['max' + col.capitalize()]) {
+						this.settings['max' + col.capitalize()] = rawContent;
+					}
 				}
+				return this.settings['max' + col.capitalize()];
 			}
-			return this.settings['max' + col.capitalize()];
 		}
 		return false;
 	}
@@ -1883,7 +1887,7 @@ const czNicTurrisPakon = class {
 	}
 
 
-	applyFilters() // @ depricated â€¦Â soon :)
+	applyFilters() // @ depricated … soon :)
 	{
 		if (!this.settings.filterBy) {
 			return true;
@@ -2102,7 +2106,7 @@ const czNicTurrisPakon = class {
 	<script src="czNicTurrisPakon.js"></script>
 	<script>
 		const cntp = new czNicTurrisPakon(window);
-		//cntp.settings = {'lang': 'cs', 'â€¦': true};
+		//cntp.settings = {'lang': 'cs', '…': true};
 		cntp.run();
 		//const cs = window.document.currentScript;
 		//cs.parentNode.removeChild(cs);
