@@ -1,5 +1,5 @@
 'use strict';
-
+// edit
 const czNicTurrisPakon = class {
 
 	/*
