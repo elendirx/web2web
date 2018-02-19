@@ -261,6 +261,23 @@ Sběr dat na routeru Turris Omnia probíhá v uživatelském rozhraní Foris. Sb
 							</label>
 						</fieldset>
 						<fieldset>
+							<legend>Adresa</legend>
+							<label for="street" class="text-like">
+								Ulice:
+								<input type="text" name="street" id="street" maxlength="255" required>
+							</label>
+							<br>
+							<label for="city" class="text-like">
+								Město:
+								<input type="text" name="city" id="city" maxlength="255" required>
+							</label>
+							<br>
+							<label for="postal-code" class="text-like">
+								<abbr title="Poštovní směrovací číslo">PSČ</abbr>:
+								<input type="text" name="postal-code" id="postal-code" maxlength="10" pattern="[0-9A-Za-z]{3,5}( |\-)?[0-9A-Za-z]{2,4}$" required>
+							</label>
+						</fieldset>
+						<fieldset>
 							<legend>Kontaktní osoba</legend>
 							<label for="name" class="text-like">
 								Jméno:
