@@ -57,6 +57,7 @@
 					<h2>Tenhle červeně ohraničený odstavec tu nebude!!!</h2>
 					<ul class="browser-default">
 					<li>poznámka: přidat pole Jméno, pole příjmení kontaktní osoby do formuláře</li>
+					<li>poznámka: přidat pole Ulice pole Číslo domu, pole Město pole PSČ do formuláře za Název instituce</li>
 					<li>ukládat do databáze (možnost stáhnout data ve formátu csv)</li>
 					<li>Email odpovědi:
 						Děkujeme Vám za projevenou důvěru. Váš požadavek na Bezpečný router byl zařazen do seznamu požadavků předchozích zájemců.
@@ -146,7 +147,7 @@
 								<h5>
 									Nezávislost							</h5>
 								<p class="light">
-									Otevřený hardware se svobodným operačním systémem založeným na OpenWrt 
+									Otevřený hardware se svobodným operačním systémem založeným na OpenWRT 
 								</p>
 							</div>
 						</div>
@@ -181,10 +182,10 @@
 									<strong>Bezpečný router pro</strong>
 									<br>
 									<ul class="browser-default">
-										<li>státní instituce, soudy, úřady</li>
-										<li>vzdělávací instituce, školy, knihovny atd</li>
-										<li>regionální instituce</li>
-										<li>neziskové organizace, kluby, spolky, nadace a sdružení</li>
+										<li>Státní instituce, soudy, úřady</li>
+										<li>Vzdělávací instituce, školy, knihovny atd</li>
+										<li>Regionální instituce</li>
+										<li>Neziskové organizace, kluby, spolky, ústavy a nadace</li>
 									</ul>
 								</div>
 							</div>
@@ -195,13 +196,13 @@
 									<strong>Proč zvolit Turris&nbsp;Omnia</strong>
 									<br>
 									<ul class="browser-default">
-										<li>výkonný router pro optickou či metalickou přípojku do 1 Gb/s</li>
-										<li>lokální WiFi konektivita 802.11ac</li>
-										<li>otevřený linuxový router na bázi OpenWRT</li>
-										<li>časté bezpečnostní aktualizace</li>
-										<li>adaptabilní firewall chránící před průniky</li>
-										<li>vzdálený dozor</li>
-										<li>bezúdržbový router s vysokou mírou bezpečnosti</li>
+										<li>Výkonný router pro optickou či metalickou přípojku do 1 Gb/s</li>
+										<li>Lokální WiFi konektivita 802.11ac</li>
+										<li>Otevřený linuxový router na bázi OpenWRT</li>
+										<li>Časté bezpečnostní aktualizace</li>
+										<li>Adaptabilní firewall chránící před průniky</li>
+										<li>Vzdálený dozor</li>
+										<li>Bezúdržbový router s vysokou mírou bezpečnosti</li>
 									</ul>
 								</div>
 							</div>
@@ -227,7 +228,7 @@
 				<div class="container">
 					<h2>Jaká data sbíráme?</h2>
 					<p>
-Sběr dat na routeru Turris Omnia probíhá v uživatelském rozhranní Foris. Sběr dat pomáhá zlepšovat obecnou bezpečnost na Internetu a uživatel získává informace a statistiky o provozu na jeho routeru. Souhlas se sběrem dat v prvních čtyřech letech účasti v projektu je povinný. Poté je router převeden do jejich vlastnictví a sběr dat se stává dobrovolným. </p>
+Sběr dat na routeru Turris Omnia probíhá v uživatelském rozhraní Foris. Sběr dat pomáhá zlepšovat obecnou bezpečnost na Internetu a uživatel získává informace a statistiky o provozu na jeho routeru. Souhlas se sběrem dat v prvních čtyřech letech účasti v projektu je povinný. Poté je router převeden do jejich vlastnictví a sběr dat se stává dobrovolným. </p>
 				</div>
 				<br>
 			</article>
@@ -253,14 +254,14 @@ Sběr dat na routeru Turris Omnia probíhá v uživatelském rozhranní Foris. S
 								Název instituce:
 								<input type="text" name="company" id="company" maxlength="255" required>
 							</label>
-							<br>
+							<br>							
 							<label for="ico" class="text-like">
 								<abbr title="Identifikační číslo osoby">IČO</abbr>:
 								<input type="number" name="ico" id="ico" min="10000000" max="99999999" size="12" required>
 							</label>
 						</fieldset>
 						<fieldset>
-							<legend>Kontaktní osoba za instituci</legend>
+							<legend>Kontaktní osoba</legend>
 							<label for="name" class="text-like">
 								Jméno:
 								<input type="text" name="name" id="name" maxlength="99" required>
@@ -281,7 +282,7 @@ Sběr dat na routeru Turris Omnia probíhá v uživatelském rozhranní Foris. S
 								<input type="tel" name="tel" id="tel" maxlength="20" size="25" pattern="((\+|00|011)\d{1,6} ?)?\d{1,3} ?(\d{3} \d{3}|\d{6,7})" required>
 							</label>
 							<label for="line" class="text-like">
-								Linka na konkrétní osobu:
+								Linka:
 								<input type="tel" name="line" id="line" maxlength="20" size="25">
 							</label>
 						</fieldset>
