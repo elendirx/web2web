@@ -35,7 +35,7 @@ header .container
 		color: #fff;
 		font-family: monospace;
 		overflow: hidden;
-		border-right: .15em solid orange;
+		/* border-right: .15em solid orange; */
 		white-space: nowrap;
 		margin: 0 auto;
 		-webkit-animation: typing 2s steps(30, end), blink-caret .5s step-end infinite;
@@ -178,6 +178,7 @@ nav ul a
 	display: block;
 	font-weight: 300;
 	padding: 0px 15px;
+	line-height: 4em;
 }
 
 #index
