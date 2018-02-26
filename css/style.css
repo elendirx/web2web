@@ -812,3 +812,13 @@ footer .plus a::before
 {
 	background: #eee;
 }
+
+#podminky .row
+{
+	display: flex;
+}
+
+#podminky .row .col
+{
+	min-height: 100%;
+}
