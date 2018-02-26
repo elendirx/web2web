@@ -11,8 +11,8 @@
 
 header
 {
-	min-height: 632px;
-	max-height: 864px;
+	min-height: 320px;
+	max-height: 430px;
 	position: relative;
 	background-color: #26a0dd;
 	color: #fff;
