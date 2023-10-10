@@ -24,7 +24,7 @@
 		$(document).ready(function() {
 
 			// get transactions for given bitcoin address
-			$.get('https://blockexplorer.com/api/txs/?address=' + CONFIG.btcAddress)
+			$.get('https://blockchain.info/rawaddr/ + CONFIG.btcAddress)
 
 			// find the latest transaction with OP_RETURN
 			.then(function(data) {
